@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Loading Page</title>
+    <style>
+        /* Resetting default styles for consistent rendering across browsers */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #282c34;
+            font-family: 'Arial', sans-serif;
+            color: #ffffff;
+        }
+
+        /* Container for all loading elements */
+        .loading-container {
+            text-align: center;
+        }
+
+        /* Circular spinning logo */
+        .logo {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            background-color: #61dafb;
+            border-radius: 50%;
+            animation: spin 2s linear infinite;
+        }
+
+        /* Pulsing loading text */
+        .loading-text {
+            font-size: 2em;
+            margin-bottom: 20px;
+            animation: pulse 1s infinite;
+        }
+
+        /* Loading bar container */
+        .loading-bar {
+            width: 300px;
+            height: 20px;
+            background-color: #444;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        /* Animated loading progress bar */
+        .loading-progress {
+            height: 100%;
+            width: 0;
+            background-color: #61dafb;
+            animation: loading 3s ease-in-out infinite;
+            border-radius: 10px;
+        }
+
+        /* Countdown timer text */
+        .countdown {
+            margin-top: 20px;
+            font-size: 1.5em;
+        }
+
+        /* Keyframe animation for loading bar */
+        @keyframes loading {
+            0% { width: 0; }
+            50% { width: 100%; }
+            100% { width: 0; }
+        }
+
+        /* Keyframe animation for spinning logo */
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Keyframe animation for pulsing text */
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-container">
+        <div class="logo"></div>
+        <div class="loading-text">Loading</div>
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+        <div class="countdown"><span id="countdown-number">1</span> </div>
+    </div>
+
+    <script>
+        // Set the initial countdown value in seconds
+        let countdownValue = 1; // Set this to any number of seconds you want
+
+        // Update the countdown every second
+        const countdownInterval = setInterval(() => {
+            // Decrease the countdown value
+            countdownValue--;
+
+            // Update the countdown display
+            document.getElementById('countdown-number').textContent = countdownValue;
+
+            // Check if the countdown has reached zero
+            if (countdownValue === 0) {
+                clearInterval(countdownInterval);
+                // Redirect to the next page
+                window.location.href = "suduku game.html";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
